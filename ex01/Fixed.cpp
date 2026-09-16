@@ -30,7 +30,7 @@ Fixed::Fixed(int const number)
 Fixed::Fixed(float const number)
 {   
     std::cout<<"Float construtor called"<<std::endl;
-    this->rawBits = static_cast<int>(std::roundf(number * (1 << fractionalBits)));
+    this->rawBits = static_cast<int>(roundf(number * (1 << fractionalBits)));
 }
 
 Fixed::~Fixed()
