@@ -77,29 +77,26 @@ bool Fixed::operator!=(Fixed const &other) const
 }
 
 Fixed Fixed::operator+(Fixed const &other)
-{
-    return(Fixed(this->rawBits + other.rawBits));
+{   
+    Fixed result;
+
+    result.setRawBits(this->rawBits + other.rawBits);
+    return(result);
 }
 
 Fixed Fixed::operator-(Fixed const &other)
-{
-    return(Fixed(this->rawBits - other.rawBits));
+{   
+    Fixed result;
+
+    result.setRawBits(this->rawBits + other.rawBits);
+    return(result);
 }
 
 Fixed Fixed::operator*(Fixed const &other)
 {   
     Fixed result;
 
-    result.setRawBits(static
-Fixed &Fixed::min(Fixed const &a, Fixed const &b)
-{
-    if (a > b)
-        return(const_cast<Fixed &>(b));
-    else
-        return(const_cast<Fixed &>(a));
-}
-_cast<int>(static_cast<long long>(this->rawBits)
-                                        * other.rawBits) >> fractionalBits);
+    result.setRawBits(static_cast<int>(static_cast<long long>(this->rawBits) * other.rawBits) >> fractionalBits);
     return result;
 }
 
