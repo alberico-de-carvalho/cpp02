@@ -76,7 +76,7 @@ bool Fixed::operator!=(Fixed const &other) const
     return(this->rawBits != other.rawBits);
 }
 
-Fixed Fixed::operator+(Fixed const &other)
+Fixed Fixed::operator+(Fixed const &other) const
 {   
     Fixed result;
 
@@ -84,7 +84,7 @@ Fixed Fixed::operator+(Fixed const &other)
     return(result);
 }
 
-Fixed Fixed::operator-(Fixed const &other)
+Fixed Fixed::operator-(Fixed const &other) const
 {   
     Fixed result;
 
@@ -92,7 +92,7 @@ Fixed Fixed::operator-(Fixed const &other)
     return(result);
 }
 
-Fixed Fixed::operator*(Fixed const &other)
+Fixed Fixed::operator*(Fixed const &other) const
 {   
     Fixed result;
 
@@ -100,7 +100,7 @@ Fixed Fixed::operator*(Fixed const &other)
     return result;
 }
 
-Fixed Fixed::operator/(Fixed const &other)
+Fixed Fixed::operator/(Fixed const &other) const
 {
     Fixed result;
 
@@ -108,7 +108,7 @@ Fixed Fixed::operator/(Fixed const &other)
     return(result);
 }
 
-Fixed Fixed::operator++()
+Fixed &Fixed::operator++()
 {
     ++this->rawBits;
     return(*this);
@@ -121,7 +121,7 @@ Fixed Fixed::operator++(int)
     return(temp);
 }
 
-Fixed Fixed::operator--()
+Fixed &Fixed::operator--()
 {
     --this->rawBits;
     return(*this);
@@ -148,12 +148,12 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed)
     return(out);
 }
 
-Fixed &Fixed::min(Fixed const &a, Fixed const &b)
+const Fixed &Fixed::min(Fixed const &a, Fixed const &b)
 {
     if (a > b)
-        return(const_cast<Fixed &>(b));
+        return(b);
     else
-        return(const_cast<Fixed &>(a));
+        return(a);
 }
 
 Fixed &Fixed::max(Fixed &a, Fixed &b)
@@ -164,10 +164,10 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
         return(b);
 }
 
-Fixed &Fixed::max(Fixed const &a, Fixed const &b)
+const Fixed &Fixed::max(Fixed const &a, Fixed const &b)
 {
     if (a > b)
-        return(const_cast<Fixed &>(a));
+        return(a);
     else    
-        return(const_cast<Fixed &>(b));
+        return(b);
 }
